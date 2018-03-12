@@ -1,4 +1,4 @@
-# projektEszk
+# Projekt eszközök
 Projekt eszkozok ELTE IK 2017/18 tavasz
 
 
