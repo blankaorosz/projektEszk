@@ -1,1 +1,1 @@
---INSERT INTO USER (ID, VERSION, EMAIL, PASSWORD, ROLE) VALUES (0, 0, 'valami@example.com', 'alma', 'ADMIN');
+INSERT INTO FAMILY (ID, VERSION, USERNAME, PASSWORD, NAME) VALUES (0, 0, 'test', 'test', 'Teszt');
