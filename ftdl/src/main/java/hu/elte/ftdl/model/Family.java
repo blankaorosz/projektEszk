@@ -28,7 +28,4 @@ public class Family {
     @Column(nullable = false)
     private String password;
 
-    @Version
-    private int version;
-
 }
