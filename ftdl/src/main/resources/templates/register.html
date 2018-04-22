@@ -9,15 +9,15 @@
         <form action="#" th:action="@{/user/register}" th:object="${user}" method="post">
             <div id="username">
                 <label for="username">Username:</label>
-                <input type="text" name="username" placeholder="username" th:field="*{username}" />
+                <input type="text" name="username" placeholder="username" th:field="*{username}" th:required="required"/>
             </div>
             <div id="password">
                 <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="password" th:field="*{password}" />
+                <input type="password" name="password" placeholder="password" th:field="*{password}" th:required="required"/>
             </div>
-            <div id="email">
-                <label for="email">Email:</label>
-                <input type="email" name="email" placeholder="email" th:field="*{email}" />
+            <div id="name">
+                <label for="name">Name:</label>
+                <input type="name" name="name" placeholder="name" th:field="*{name}" th:required="required"/>
             </div>
             <input type="submit" value="Submit!" />
             <button type="reset">Cancel</button>

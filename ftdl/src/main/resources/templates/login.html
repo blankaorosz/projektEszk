@@ -10,11 +10,11 @@
         <form action="#" th:action="@{/user/login}" th:object="${user}" method="post">
             <div id="username">
                 <label for="username">Username:</label>
-                <input type="text" name="username" placeholder="username" th:field="*{username}" />
+                <input type="text" name="username" placeholder="username" th:field="*{username}" th:required="required"/>
             </div>
             <div id="password">
                 <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="password" th:field="*{password}" />
+                <input type="password" name="password" placeholder="password" th:field="*{password}" th:required="required"/>
             </div>
             <input type="submit" value="Submit!" />
             <button type="reset">Cancel</button>
