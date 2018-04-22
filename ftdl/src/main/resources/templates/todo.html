@@ -130,14 +130,29 @@ input {
   <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
-<ul id="myUL">
+    <table>
+      <tr>
+      	<th>ID</th>
+      	<th>TASK</th>
+        <th>OWNER</th>
+        <th>STATUS</th>
+      </tr>
+      <tr th:each="todo : ${todoList}">
+      	<td th:text="${todo.id}"></td>
+        <td th:text="${todo.task}"></td>
+        <td th:text="${todo.owner}"></td>
+        <td th:text="${todo.status}"></td>
+      </tr>
+    </table>
+    
+<!--<ul id="myUL">
   <li>Hit the gym</li>
   <li class="checked">Pay bills</li>
   <li>Meet George</li>
   <li>Buy eggs</li>
   <li>Read a book</li>
   <li>Organize office</li>
-</ul>
+</ul>-->
 
 <script th:inline="javascript">
     /*<![CDATA[*/

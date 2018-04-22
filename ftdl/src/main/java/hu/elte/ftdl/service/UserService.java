@@ -10,6 +10,8 @@ import hu.elte.ftdl.repository.UserRepository;
 import hu.elte.ftdl.service.exceptions.UserNotValidException;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -19,26 +21,18 @@ import org.springframework.web.context.annotation.SessionScope;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder encoder;
 
     private Family user;
 
-    public Family login(Family user) throws UserNotValidException {
-        if (isValid(user)) {
-            return this.user = userRepository.findByUsername(user.getUsername()).get();
-        }
-        throw new UserNotValidException();
-    }
-
     public Family register(Family user) {
+        user.setPassword(encoder.encode(user.getPassword()));
         this.user = userRepository.save(user);
         return user;
     }
 
-    public boolean isValid(Family user) {
-        return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()).isPresent();
-    }
-
     public boolean isLoggedIn() {
-        return user != null;
+        return !"anonymousUser".equals(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 }

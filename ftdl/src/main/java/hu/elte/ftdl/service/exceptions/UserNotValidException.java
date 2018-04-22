@@ -9,5 +9,12 @@ package hu.elte.ftdl.service.exceptions;
  *
  * @author Horváth Csilla
  */
-public class UserNotValidException extends Exception {
+public class UserNotValidException extends RuntimeException {
+
+    public UserNotValidException() {
+    }
+
+    public UserNotValidException(String message) {
+        super(message);
+    }
 }

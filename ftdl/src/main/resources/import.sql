@@ -1,1 +1,4 @@
-INSERT INTO FAMILY (ID, VERSION, USERNAME, PASSWORD, NAME) VALUES (0, 0, 'test', 'test', 'Teszt');
+-- default password = test
+INSERT INTO FAMILY (ID, USERNAME, PASSWORD, NAME) VALUES (0, 'test', '$2a$11$wvfQIFmdNfsY2h7T0ef9NOp4rD0EXOOC12MK5DlRwiePLtyWMs1ZS', 'Teszt');
+
+INSERT INTO TODO (ID, VERSION, FAMILY_ID, TASK, OWNER, STATUS) VALUES (0, 1, 0, 'Teszt feladat', 'Pisti', 0);

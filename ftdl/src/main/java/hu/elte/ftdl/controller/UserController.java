@@ -4,9 +4,9 @@ package hu.elte.ftdl.controller;
  *
  * @author Horváth Csilla
  */
-
 import hu.elte.ftdl.model.Family;
 import hu.elte.ftdl.service.UserService;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,24 +19,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/greet")
-    public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
-    }
-
     @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("user", new Family());
-        return "login";
-    }
-
-    @PostMapping("/login")
-    public String login(@ModelAttribute Family user, Model model) {
-        if (userService.isValid(user)) {
-            return redirectToGreeting(user);
+    public String login() {
+        if (userService.isLoggedIn()) {
+            return redirectToTODOList();
         }
-        model.addAttribute("loginFailed", true);
         return "login";
     }
 
@@ -47,12 +34,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute Family user) {
+    public String register(@ModelAttribute Family user, HttpServletRequest request) {
         userService.register(user);
-        return redirectToGreeting(user);
+
+        return "redirect:/user/login";
     }
 
-    private String redirectToGreeting(@ModelAttribute Family user) {
-        return "redirect:/user/greet?name=" + user.getUsername();
+    private String redirectToTODOList() {
+        return "redirect:/todo/list";
     }
 }

@@ -7,17 +7,18 @@
     <body>
         <h1>Login</h1>
         <h2 th:if="${loginFailed}">Invalid user data!</h2>
-        <form action="#" th:action="@{/user/login}" th:object="${user}" method="post">
+        <form action="#" th:action="@{/user/login}" method="post">
             <div id="username">
                 <label for="username">Username:</label>
-                <input type="text" name="username" placeholder="username" th:field="*{username}" th:required="required"/>
+                <input type="text" name="username" placeholder="username" th:required="required"/>
             </div>
             <div id="password">
                 <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="password" th:field="*{password}" th:required="required"/>
+                <input type="password" name="password" placeholder="password" th:required="required"/>
             </div>
             <input type="submit" value="Submit!" />
             <button type="reset">Cancel</button>
         </form>
+        <div><a th:href="@{/user/register}" href="register">register</a></div>
     </body>
 </html>
