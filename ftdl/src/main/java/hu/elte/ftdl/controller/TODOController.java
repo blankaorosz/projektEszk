@@ -13,10 +13,16 @@ import hu.elte.ftdl.service.TodoService;
 import hu.elte.ftdl.service.exceptions.UserNotValidException;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -48,5 +54,67 @@ public class TODOController {
         model.addAttribute("todoList", todoList);
         
         return "todo";
+    }
+
+    @PostMapping
+    private ResponseEntity<Todo> create(@RequestBody Todo todo) {
+        Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        if (! (o instanceof FtdlUserPrincipal)) {
+            throw new UserNotValidException("Unexpected behaviour! Not the correct principal is set");
+        }
+        
+        FtdlUserPrincipal principal = (FtdlUserPrincipal) o;    
+        Family f = userRepository.findByUsername(principal.getUsername()).get();
+
+        if(f == null)
+            return ResponseEntity.badRequest().build();
+
+        todo.setFamily(f);
+
+        Todo saved = todoService.create(todo, f);
+
+        return ResponseEntity.ok(todo);
+    }
+
+    @DeleteMapping("/{id}")
+    private ResponseEntity delete(@PathVariable int id) {
+        Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        if (! (o instanceof FtdlUserPrincipal)) {
+            throw new UserNotValidException("Unexpected behaviour! Not the correct principal is set");
+        }
+        
+        FtdlUserPrincipal principal = (FtdlUserPrincipal) o;    
+        Family f = userRepository.findByUsername(principal.getUsername()).get();
+
+        Todo t = todoService.find(id);
+
+        if(t.getFamily() != f)
+            return ResponseEntity.badRequest().build();
+
+        todoService.delete(t);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}")
+    private ResponseEntity<Todo> update(@PathVariable int id, @RequestBody Todo todo) {
+        Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        if (! (o instanceof FtdlUserPrincipal)) {
+            throw new UserNotValidException("Unexpected behaviour! Not the correct principal is set");
+        }
+        
+        FtdlUserPrincipal principal = (FtdlUserPrincipal) o;    
+        Family f = userRepository.findByUsername(principal.getUsername()).get();
+
+        Todo t = todoService.find(id);
+        if(t.getFamily() != f)
+            return ResponseEntity.badRequest().build();
+
+        Todo updated = todoService.update(id, todo);
+
+        return ResponseEntity.ok(updated);
+
     }
 }

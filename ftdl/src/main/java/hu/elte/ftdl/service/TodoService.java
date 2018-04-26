@@ -25,4 +25,26 @@ public class TodoService {
     public Collection<Todo> getTodoListByFamily(Family family) {
         return toDoRepository.findByFamily(family);
     }
+
+    public Todo create(Todo todo, Family family) {
+        todo.setStatus(false);
+        todo.setFamily(family);
+        return toDoRepository.save(todo);
+
+    }
+
+    public Todo update(int id, Todo todo) {
+        Todo currentTodo = toDoRepository.findById(id).get();
+        currentTodo.setStatus(todo.getStatus());
+        return toDoRepository.save(currentTodo);
+
+    }
+
+    public void delete(Todo todo) {
+        toDoRepository.delete(todo);
+    }
+
+    public Todo find(int id){
+        return toDoRepository.findById(id).get();
+    }
 }
