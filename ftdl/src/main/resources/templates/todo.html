@@ -166,7 +166,8 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
       	<td th:text="${todo.id}"></td>
         <td th:text="${todo.task}"></td>
         <td th:text="${todo.owner}"></td>
-        <td th:text="${todo.status}"></td>
+        <td><input style="margin:20px; width:30px" type="checkbox" checked="checked"></td>
+        <!--<td th:text="${todo.status}"></td>-->
         <td>
           <form action="#" th:action="@{/todo/{id}}" th:object="${id}" method="delete">
           <input type="submit" value="Delete" />
