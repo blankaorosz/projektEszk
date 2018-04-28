@@ -10,8 +10,12 @@ A program fejlesztése Java nyelven történik és egy családi todo list-et val
 Technológiák szempontjából fontos megemlíteni, hogy Spring Boot keretrendszerben íródó, MVC architektúrájú alkalmazás. 
 A csapat a Git verziókezelő rendszert választotta a fejlesztési folyamat és a közös munka megkönnyítésére.
 
-Felhasználó dokumentáció
--------------------------
+
+FELHASZNÁLÓI DOKUMENTÁCIÓ
+--------------------------
+
+Futtatás
+----------
 Az alábbi programba olyan családok regisztrációját várjuk, akik szeretnék egy helyen látni a teendőiket. Regisztrálnak, majd azzal a felhasználónévvel és jelszóval léphet be az egész család. Felvehetnek feladatokat és megadhatják, hogy kinek szánják azt.
 
 Az alkalmazás főként netbeansben íródott, így használatához a következő lépések szükségesek:
@@ -23,7 +27,8 @@ Az alkalmazás főként netbeansben íródott, így használatához a következ�
 4.jobb kattintás az alkalmazáson majd run
 5. az alkalmazás elindul a localhost:8080-on
 
-Felhasználás:
+Működés
+---------
 1.Induláskor a user/login url-re kerülünk, ahol be tudunk jelentkezni, amenyiben nincs accountunk a Regsztrációra kell kattintani
 2.Regisztráció során megadunk egy nevet, egy felhasználónevet és egy jelszót.
 3.Ez után a login oldalon bejelentkezhetünk
