@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -56,8 +57,8 @@ public class TODOController {
         return "todo";
     }
 
-    @PostMapping
-    private ResponseEntity<Todo> create(@RequestBody Todo todo) {
+    @PostMapping("/list")
+    public String create(@ModelAttribute Todo todo) {
         Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         
         if (! (o instanceof FtdlUserPrincipal)) {
@@ -68,13 +69,13 @@ public class TODOController {
         Family f = userRepository.findByUsername(principal.getUsername()).get();
 
         if(f == null)
-            return ResponseEntity.badRequest().build();
+            throw new UserNotValidException("Unexpected behaviour! Not the correct principal is set");
 
         todo.setFamily(f);
 
         Todo saved = todoService.create(todo, f);
 
-        return ResponseEntity.ok(todo);
+        return "redirect:/todo/list";
     }
 
     @DeleteMapping("/{id}")
