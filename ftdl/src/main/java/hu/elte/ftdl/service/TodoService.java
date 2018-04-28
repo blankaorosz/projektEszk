@@ -36,8 +36,6 @@ public class TodoService {
     public Todo update(int id, Todo todo) {
         Todo currentTodo = toDoRepository.findById(id).get();
         currentTodo.setStatus(todo.getStatus());
-        currentTodo.setOwner(todo.getOwner());
-        currentTodo.setTask(todo.getTask());
         return toDoRepository.save(currentTodo);
 
     }

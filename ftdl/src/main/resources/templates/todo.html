@@ -162,16 +162,14 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
         <th>OWNER</th>
         <th colspan="2" >STATUS</th>
       </tr>
-      <tr th:each="todo : ${todoList}">
+      <tr th:each="todo : ${todoList}" th:id="${todo.id}">
       	<td th:text="${todo.id}"></td>
         <td th:text="${todo.task}"></td>
         <td th:text="${todo.owner}"></td>
-        <td><input style="margin:20px; width:30px" type="checkbox" checked="checked"></td>
+        <td><input style="margin:20px; width:30px" type="checkbox" th:checked="${todo.status}" th:onchange="'handleCheckBoxChange(\'' + ${todo.id} + '\');'"></td>
         <!--<td th:text="${todo.status}"></td>-->
         <td>
-          <form action="#" th:action="@{/todo/{id}}" th:object="${id}" method="delete">
-          <input type="submit" value="Delete" />
-          </form>
+          <button th:onclick="'handleDeleteButtonClick(\'' + ${todo.id} + '\');'">Delete</button>
         </td>
 
 
@@ -192,6 +190,39 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
             </div>
             <input type="submit" value="ADD" />
  </form>
+<script>
+  function handleCheckBoxChange(id){
+    let elem = document.getElementById(id);
+    let checkbox = elem.querySelector("input[type=checkbox]");
+    ajax({
+      method: "PUT",
+      url: `/todo/${id}`,
+      data: {status: checkbox.checked},
+      callback: (resp) => {console.log(resp)}
+    });
+  }
 
+  function handleDeleteButtonClick(id){
+    let elem = document.getElementById(id);
+    ajax({
+      method: "DELETE",
+      url: `/todo/${id}`,
+      callback: () => {elem.remove();}
+    });
+  }
+
+  function ajax(args){
+    let {method, data, url, callback} = args;
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        callback(xhttp.response);
+      }
+    };
+    xhttp.open(method, url, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(data)); 
+  }
+</script>
 </body>
 </html>
