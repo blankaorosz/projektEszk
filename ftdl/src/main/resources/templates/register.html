@@ -98,8 +98,7 @@ button:hover {
     </style>
     <body class="fadeInDown">
         <h1>Register</h1>
-        <img src="funny_picture_login.jpg" alt="Avatar" class="img-responsive">
-       <!-- <h2 th:if="${loginFailed}">Invalid user data!</h2>-->
+        
         <form action="#" th:action="@{/user/register}" th:object="${user}" method="post">
             <div id="username">
                 <label for="username">Username:</label>

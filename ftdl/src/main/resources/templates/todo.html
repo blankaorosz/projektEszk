@@ -153,7 +153,6 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
 
 <div id="myDIV" class="header">
   <h2 style="margin:5px">My To Do List</h2>
-  <img src="funny_picture_login2.jpg" alt="Avatar" class="img-responsive">
 </div>
 
     <table class="table">
@@ -170,7 +169,10 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
         <td th:text="${todo.status}"></td>
       </tr>
     </table>
-    
+
+<div id="myDIV" class="header">
+  <h3 style="margin:3px">CREATE NEW TODO:</h3>
+</div>
 <form action="#" th:action="@{/todo/list}" th:object="${todo}" method="post">
             <div>
                 <label for="owner">owner</label>
@@ -180,7 +182,7 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
                 <label for="task">task</label>
                 <input type="text" name="task" placeholder="task" th:required="required"/>
             </div>
-            <input type="submit" value="Submit!" />
+            <input type="submit" value="ADD" />
  </form>
 
 </body>
