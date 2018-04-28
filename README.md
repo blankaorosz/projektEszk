@@ -20,17 +20,17 @@ Az alábbi programba olyan családok regisztrációját várjuk, akik szeretnék
 
 Az alkalmazás főként netbeansben íródott, így használatához a következő lépések szükségesek:
 
-1.töltsük le az FTDL (Family Todo List) alkalmazást githubról
-2.importáljuk netbeans-be
-3.ha szükségek akkor jobb kattintás az alkalmazáson és "resolve project problems"
-3.jobb kattintás az alkalmazáson majd clean and build
-4.jobb kattintás az alkalmazáson majd run
-5. az alkalmazás elindul a localhost:8080-on
+- 1.töltsük le az FTDL (Family Todo List) alkalmazást githubról
+- 2.importáljuk netbeans-be
+- 3.ha szükségek akkor jobb kattintás az alkalmazáson és "resolve project problems"
+- 3.jobb kattintás az alkalmazáson majd clean and build
+- 4.jobb kattintás az alkalmazáson majd run
+- 5. az alkalmazás elindul a localhost:8080-on
 
 Működés
 ---------
-1.Induláskor a user/login url-re kerülünk, ahol be tudunk jelentkezni, amenyiben nincs accountunk a Regsztrációra kell kattintani
-2.Regisztráció során megadunk egy nevet, egy felhasználónevet és egy jelszót.
-3.Ez után a login oldalon bejelentkezhetünk
-4.Innen a todo listához kerülünk, elkezdhetünk létrehozni és menedzselni todokat.
+- 1.Induláskor a user/login url-re kerülünk, ahol be tudunk jelentkezni, amenyiben nincs accountunk a Regsztrációra kell kattintani
+- 2.Regisztráció során megadunk egy nevet, egy felhasználónevet és egy jelszót.
+- 3.Ez után a login oldalon bejelentkezhetünk
+- 4.Innen a todo listához kerülünk, elkezdhetünk létrehozni és menedzselni todokat.
 
