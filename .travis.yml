@@ -1,1 +1,5 @@
 language: java
+
+notifications:
+  email:
+    - horvath.csilla.alexandra@gmail.com
