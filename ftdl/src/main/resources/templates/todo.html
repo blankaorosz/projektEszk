@@ -157,13 +157,11 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
 
     <table class="table">
       <tr>
-      	<th>ID</th>
       	<th>TASK</th>
         <th>OWNER</th>
         <th colspan="2" >STATUS</th>
       </tr>
       <tr th:each="todo : ${todoList}" th:id="${todo.id}">
-      	<td th:text="${todo.id}"></td>
         <td th:text="${todo.task}"></td>
         <td th:text="${todo.owner}"></td>
         <td><input style="margin:20px; width:30px" type="checkbox" th:checked="${todo.status}" th:onchange="'handleCheckBoxChange(\'' + ${todo.id} + '\');'"></td>
