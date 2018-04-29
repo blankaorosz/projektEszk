@@ -3,3 +3,6 @@ language: java
 notifications:
   email:
     - horvath.csilla.alexandra@gmail.com
+    - oroszblanki@gmail.com
+    on_success: always 
+    on_failure: always 
