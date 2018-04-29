@@ -90,7 +90,7 @@ img{
     opacity: 0.8;
 }
 
-button:hover {
+.btn:hover {
     opacity: 0.8;
 }
         </style>
@@ -99,18 +99,18 @@ button:hover {
         <h1 class="jumbotron" style="text-align:center;font-weight:bold;color:white;background-color:grey;margin:0px">Family To-Do List</h1>
         <form style="margin-top: 20px;" action="#" th:action="@{/user/login}" method="post">
             <div class="row">
-                <div class="col-md-offset-3 col-md-6">
-                    <div id="username">
+                <div class="col-md-offset-3 col-md-6"> 
+                    <div>
                         <div style="font-weight:bold">Username:</div>
                         <input type="text" name="username" placeholder="username" th:required="required"/>
                     </div>
-                    <div id="password">
+                    <div>
                         <div style="font-weight:bold">Password:</div>
                         <input type="password" name="password" placeholder="password" th:required="required"/>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <input style="width:100%;margin:0px;font-weight:bold" id="submit" type="submit" value="Login" />
+                            <input class="btn" style="width:100%;margin:0px;font-weight:bold" id="submit" type="submit" value="Login" />
                         </div>
                         <div class="col-md-6">
                             <a style="width:100%; color:white;background-color: royalblue;color:white;font-weight:bold;margin:0px" class="btn" th:href="@{/user/register}" href="register">Register</a></div>

@@ -7,10 +7,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
+
     <style>
     body {font-family: Arial, Helvetica, sans-serif;}
-    form {border: 3px solid #f1f1f1;}
 
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
@@ -68,7 +67,7 @@ img{
     width: 2500px;
 }
 
-button {
+.btn {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -92,28 +91,40 @@ button {
     opacity: 0.8;
 }
 
-button:hover {
+.btn:hover {
     opacity: 0.8;
 }
     </style>
+    </head>
     <body class="fadeInDown">
-        <h1>Register</h1>
+        <h1 class="jumbotron" style="text-align:center;font-weight:bold;color:white;background-color:grey;margin:0px">Register</h1>
         
-        <form action="#" th:action="@{/user/register}" th:object="${user}" method="post">
-            <div id="username">
-                <label for="username">Username:</label>
-                <input type="text" name="username" placeholder="username" th:field="*{username}" th:required="required"/>
+        <form style="margin-top: 20px;" action="#" th:action="@{/user/register}" th:object="${user}" method="post">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">            
+                    <div>
+                        <div style="font-weight:bold">Username:</div>
+                        <input type="text" name="username" placeholder="username" th:field="*{username}" th:required="required"/>
+                    </div>
+                    <div>
+                        <div style="font-weight:bold">Password:</div>
+                        <input type="password" name="password" placeholder="password" th:field="*{password}" th:required="required"/>
+                    </div>
+                    <div>
+                        <div style="font-weight:bold">Name:</div>
+                        <input type="text" name="name" placeholder="name" th:field="*{name}" th:required="required"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input style="width:100%;font-weight:bold;" class="btn" id="submit" type="submit" value="Submit!" />
+                        </div>
+                        <div class="col-md-6">
+                            <button style="width:100%;background-color:#808080;font-weight:bold;" class="btn" type="reset">Reset</button>
+                        </div>
+                </div>
             </div>
-            <div id="password">
-                <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="password" th:field="*{password}" th:required="required"/>
-            </div>
-            <div id="name">
-                <label for="name">Name:</label>
-                <input type="name" name="name" placeholder="name" th:field="*{name}" th:required="required"/>
-            </div>
-            <input id="submit" type="submit" value="Submit!" />
-            <button type="reset">Cancel</button>
         </form>
     </body>
 </html>
+
+ 
