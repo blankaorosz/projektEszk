@@ -27,6 +27,9 @@ public class UserService {
     private Family user;
 
     public Family register(Family user) {
+        if(userRepository.findByUsername(user.getUsername()).isPresent()){
+            return user;
+        }
         user.setPassword(encoder.encode(user.getPassword()));
         this.user = userRepository.save(user);
         return user;
