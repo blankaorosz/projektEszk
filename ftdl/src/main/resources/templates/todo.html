@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Family To-Do List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -190,7 +191,7 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
 </head>
 <body class="fadeInDown">
 
-<div id="myDIV" class="header">
+<div class="header">
   <h2 style="margin:5px">My To Do List</h2>
 </div>
 
@@ -213,16 +214,16 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
       </tr>
     </table>
 
-<div id="myDIV" class="header">
+<div class="header">
   <h3>CREATE NEW TODO:</h3>
 </div>
 <form action="#" th:action="@{/todo/list}" th:object="${todo}" method="post">
             <div>
-                <label for="owner">owner</label>
+                <div style="font-weight:bold">owner</div>
                 <input type="text" name="owner" placeholder="owner" th:required="required"/>
             </div>
             <div>
-                <label for="task">task</label>
+                <div style="font-weight:bold">task</div>
                 <input type="text" name="task" placeholder="task" th:required="required"/>
             </div>
             <input style="background-color:#d9534f; color: white" type="submit" value="ADD" />
