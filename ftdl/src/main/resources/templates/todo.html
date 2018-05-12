@@ -62,6 +62,7 @@ img{
 table {
   margin: 0;
   padding: 0;
+  background-color: white;
 }
 
 /* Style the list items */
@@ -70,7 +71,7 @@ table tr {
   position: relative;
   padding: 12px 8px 12px ;
   list-style-type: none;
-  background: #eee;
+  background: white;
   font-size: 18px;
   transition: 0.2s;
   
@@ -126,13 +127,13 @@ color:#f44336;
 }
 
 .close:hover {
-  background-color: #d9534f;
+  background-color: #4CAF50;
   color: white;
 }
 
 /* Style the header */
 .header {
-  background-color: #d9534f;
+  background-color: #4CAF50;
   padding: 30px 40px;
   color: white;
   text-align: center;
@@ -194,26 +195,26 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
 <div class="header">
   <h2 style="margin:5px">My To Do List</h2>
 </div>
+    
+      <table class="table">
+        <tr>
+          <th>TASK</th>
+          <th>OWNER</th>
+          <th colspan="2" >STATUS</th>
+        </tr>
+        <tr th:each="todo : ${todoList}" th:id="${todo.id}">
+          <td th:text="${todo.task}"></td>
+          <td th:text="${todo.owner}"></td>
+          <td><input style="margin:20px; width:30px; size: 200px;" type="checkbox" th:checked="${todo.status}" th:onchange="'handleCheckBoxChange(\'' + ${todo.id} + '\');'"></td>
+          <!--<td th:text="${todo.status}"></td>-->
+          <td>
+            <button class="btn btn-danger"  th:onclick="'handleDeleteButtonClick(\'' + ${todo.id} + '\');'">Delete</button>
+          </td>
 
-    <table class="table">
-      <tr>
-      	<th>TASK</th>
-        <th>OWNER</th>
-        <th colspan="2" >STATUS</th>
-      </tr>
-      <tr th:each="todo : ${todoList}" th:id="${todo.id}">
-        <td th:text="${todo.task}"></td>
-        <td th:text="${todo.owner}"></td>
-        <td><input style="margin:20px; width:30px; size: 200px;" type="checkbox" th:checked="${todo.status}" th:onchange="'handleCheckBoxChange(\'' + ${todo.id} + '\');'"></td>
-        <!--<td th:text="${todo.status}"></td>-->
-        <td>
-          <button class="btn btn-danger"  th:onclick="'handleDeleteButtonClick(\'' + ${todo.id} + '\');'">Delete</button>
-        </td>
 
-
-      </tr>
-    </table>
-
+        </tr>
+      </table>
+    
 <div class="header">
   <h3>CREATE NEW TODO:</h3>
 </div>
@@ -226,10 +227,10 @@ box-shadow: -12px 14px 23px 4px rgba(0,0,0,0.75);
                 <div style="font-weight:bold">task</div>
                 <input type="text" name="task" placeholder="task" th:required="required"/>
             </div>
-            <input style="background-color:#d9534f; color: white" type="submit" value="ADD" />
+            <input style="background-color:royalblue; color: white" type="submit" value="ADD" />
  </form>
  <form action="#" th:action="@{/user/logout}" method="post">
-  <input style="background-color:#d9534f; color: white" type="submit" value="LOGOUT" />
+  <input style="background-color:#4CAF50; color: white" type="submit" value="LOGOUT" />
 </form>
 
 
